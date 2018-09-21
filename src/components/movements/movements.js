@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios';
 import MovementItem from './movement'
 import { Pagination } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 export default class MovementsList extends React.Component {
   state = {

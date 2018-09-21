@@ -1,13 +1,7 @@
 import React from 'react';
-import moment from 'moment'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import moment from 'moment';
 
 export default class MovementItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <tr>

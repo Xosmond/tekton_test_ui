@@ -1,11 +1,8 @@
-import React from 'react'
-import moment from 'moment'
+import React from 'react';
+import moment from 'moment';
 import axios from 'axios';
-import DatePicker from 'react-datepicker'
-import { ToastContainer } from "react-toastr";
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import "toastr/build/toastr.css";
-import "animate.css/animate.css";
 
 export default class EmployeeNew extends React.Component {
   constructor(props) {
@@ -68,10 +65,6 @@ export default class EmployeeNew extends React.Component {
   render() {
     return (
       <div>
-        <ToastContainer
-          ref={ref => this.container = ref}
-          className="toast-top-right"
-        />
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label >Document</label>
