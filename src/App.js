@@ -11,6 +11,9 @@ import "animate.css/animate.css";
 import EmployeesList from './components/employees/employees'
 import EmployeeNew from './components/employees/employeeNew'
 import EmployeeEdit from './components/employees/employeeEdit'
+import CurrenciesList from './components/currencies/currencies'
+import CurrencyNew from './components/currencies/currencyNew'
+import CurrencyEdit from './components/currencies/currencyEdit'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -66,12 +69,20 @@ export default class App extends React.Component {
                 <Link to="/employees">Employees</Link>
               </div>
             </div>
+            <div className="row">
+              <div className="col-xs-12">
+                <Link to="/currencies">Currencies</Link>
+              </div>
+            </div>
           </div>
           <div className="col-xs-12 col-md-8">
             <Route exact path="/" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
             <Route exact path="/employees" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
             <Route exact path="/employees/new" render={(props)=><EmployeeNew success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
             <Route exact path="/employees/:id/edit" render={(props)=><EmployeeEdit success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
+            <Route exact path="/currencies" render={(props)=><CurrenciesList success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
+            <Route exact path="/currencies/new" render={(props)=><CurrencyNew success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
+            <Route exact path="/currencies/:id/edit" render={(props)=><CurrencyEdit success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
           </div>
         </div>
       </div>
