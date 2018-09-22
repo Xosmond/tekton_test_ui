@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import MovementItem from './movement'
 import { Pagination } from 'react-bootstrap';
+import { API_URL } from './../utilities';
 
 export default class MovementsToday extends React.Component {
   state = {
@@ -23,7 +24,7 @@ export default class MovementsToday extends React.Component {
 
   getMovements(number = this.state.page) {
     this.setState({ isLoading: true, page: number });
-    axios.get(`http://localhost:3001/movements`, {params: {page: number, start: moment().format("YYYY-MM-DD"), end: moment().format("YYYY-MM-DD")}})
+    axios.get(`${API_URL}movements`, {params: {page: number, start: moment().format("YYYY-MM-DD"), end: moment().format("YYYY-MM-DD")}})
     .then(res => {
       const movements = res.data.movements;
       const count = res.data.count

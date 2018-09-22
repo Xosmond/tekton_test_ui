@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import displayError from './../utilities'
+import { displayError, API_URL } from './../utilities';
 
 export default class CurrencyItem extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class CurrencyItem extends React.Component {
     this.destroy = this.destroy.bind(this)
   }
   destroy() {
-    axios.delete(`http://localhost:3001/currencies/${this.props.currency.id}`)
+    axios.delete(`${API_URL}currencies/${this.props.currency.id}`)
     .then(() => {
       this.props.success('Success', 'Currency deleted sucessfully.');
       this.props.getCurrencies(1)

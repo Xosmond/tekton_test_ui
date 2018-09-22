@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import displayError from './../utilities'
+import { displayError, API_URL } from './../utilities';
 
 export default class EmployeeNew extends React.Component {
   state = {code: '', name: '', sign: '', rate: '', codeValid: false, nameValid: false, signValid: false, rateValid: false};
@@ -8,7 +8,7 @@ export default class EmployeeNew extends React.Component {
     super(props);
     this.props.setTitle("Edit Currency")
     var id = this.props.match.params.id
-    axios.get(`http://localhost:3001/currencies/${id}`)
+    axios.get(`${API_URL}currencies/${id}`)
     .then(res => {
       const currency = res.data.currency;
       this.setState({code: currency.code, name: currency.name, sign: currency.sign,
@@ -31,7 +31,7 @@ export default class EmployeeNew extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.state.codeValid && this.state.nameValid && this.state.signValid && this.state.rateValid) {
-      axios.put('http://localhost:3001/currencies/' + this.props.match.params.id, {
+      axios.put(`${API_URL}currencies/${this.props.match.params.id}`, {
         code: this.state.code,
         name: this.state.name,
         sign: this.state.sign,

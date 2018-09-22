@@ -3,6 +3,7 @@ import axios from 'axios';
 import CurrencyItem from './currency'
 import { Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { API_URL } from './../utilities';
 
 export default class CurrenciesList extends React.Component {
   state = {
@@ -23,7 +24,7 @@ export default class CurrenciesList extends React.Component {
 
   getCurrencies(number = this.state.page) {
     this.setState({ isLoading: true, page: number });
-    axios.get(`http://localhost:3001/currencies`, {params: {page: number}})
+    axios.get(`${API_URL}currencies`, {params: {page: number}})
     .then(res => {
       const currencies = res.data.currencies;
       const count = res.data.count

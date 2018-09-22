@@ -1,6 +1,8 @@
 import React from 'react'
 
-export default function displayError(errors) {
+export const API_URL = "http://localhost:3001/api/v1/"
+
+export function displayError(errors) {
   var property_errors_main_all = []
   for (var property in errors) {
     if (errors.hasOwnProperty(property)) {
@@ -10,3 +12,5 @@ export default function displayError(errors) {
   }
   return property_errors_main_all
 }
+
+

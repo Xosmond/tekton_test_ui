@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import displayError from './../utilities'
+import { displayError, API_URL } from './../utilities';
 
 export default class EmployeeNew extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class EmployeeNew extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.state.codeValid && this.state.nameValid && this.state.signValid && this.state.rateValid) {
-      axios.post('http://localhost:3001/currencies', {
+      axios.post(`${API_URL}currencies`, {
         code: this.state.code,
         name: this.state.name,
         sign: this.state.sign,

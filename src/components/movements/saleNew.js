@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
-import displayError from './../utilities';
+import { displayError, API_URL } from './../utilities';
 
 export default class SaleNew extends React.Component {
   state = {date: moment(), code: '', description: '', amount: '', currencyId: '', currencies: [],
@@ -11,7 +11,7 @@ export default class SaleNew extends React.Component {
   constructor(props) {
     super(props);
     this.props.setTitle("New Sale")
-    axios.get(`http://localhost:3001/currencies/all`)
+    axios.get(`${API_URL}currencies/all`)
     .then(res => {
       const currencies = res.data.currencies;
       this.setState({currencies: currencies });
@@ -34,7 +34,7 @@ export default class SaleNew extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.state.codeValid && this.state.descriptionValid && this.state.amountValid && this.state.currencyValid) {
-      axios.post('http://localhost:3001/movements/sale', {
+      axios.post(`${API_URL}movements/sale`, {
         sale: {
           date: this.state.date.format("YYYY-MM-DD"),
           code: this.state.code,

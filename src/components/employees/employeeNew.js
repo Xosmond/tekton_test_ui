@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
-import displayError from './../utilities';
+import { displayError, API_URL } from './../utilities';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -31,7 +31,7 @@ export default class EmployeeNew extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.state.docValid && this.state.namesValid && this.state.lastNamesValid) {
-      axios.post('http://localhost:3001/employees', {
+      axios.post(`${API_URL}employees`, {
         doc: this.state.doc,
         names: this.state.names,
         last_names: this.state.lastNames,

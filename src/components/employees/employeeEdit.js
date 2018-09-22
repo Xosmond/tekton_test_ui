@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
-import displayError from './../utilities';
+import { displayError, API_URL } from './../utilities';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -13,7 +13,7 @@ export default class EmployeeNew extends React.Component {
     super(props);
     this.props.setTitle("Edit employee")
     var id = this.props.match.params.id
-    axios.get(`http://localhost:3001/employees/${id}`)
+    axios.get(`${API_URL}employees/${id}`)
     .then(res => {
       const employee = res.data.employee;
       this.setState({doc: employee.doc, names: employee.names, lastNames: employee.last_names,
@@ -40,7 +40,7 @@ export default class EmployeeNew extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.state.docValid && this.state.namesValid && this.state.lastNamesValid) {
-      axios.put('http://localhost:3001/employees/' + this.props.match.params.id, {
+      axios.put(`${API_URL}employees/${this.props.match.params.id}`, {
         doc: this.state.doc,
         names: this.state.names,
         last_names: this.state.lastNames,

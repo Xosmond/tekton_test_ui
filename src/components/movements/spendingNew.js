@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
-import displayError from './../utilities';
+import { displayError, API_URL } from './../utilities';
 
 export default class SpendingNew extends React.Component {
   state = {date: moment(), code: '', description: '', amount: '', currencyId: '', employeeId: '', codes: [], currencies: [], employees: [],
@@ -11,17 +11,17 @@ export default class SpendingNew extends React.Component {
   constructor(props) {
     super(props);
     this.props.setTitle("New Spending")
-    axios.get(`http://localhost:3001/movements/spending_codes`)
+    axios.get(`${API_URL}movements/spending_codes`)
     .then(res => {
       const codes = res.data.codes;
       this.setState({codes: codes });
     })
-    axios.get(`http://localhost:3001/currencies/all`)
+    axios.get(`${API_URL}currencies/all`)
     .then(res => {
       const currencies = res.data.currencies;
       this.setState({currencies: currencies });
     })
-    axios.get(`http://localhost:3001/employees/all`)
+    axios.get(`${API_URL}employees/all`)
     .then(res => {
       const employees = res.data.employees;
       this.setState({employees: employees });
@@ -46,7 +46,7 @@ export default class SpendingNew extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     if (this.state.codeValid && this.state.descriptionValid && this.state.amountValid && this.state.currencyValid && this.state.employeeValid) {
-      axios.post('http://localhost:3001/movements/spending', {
+      axios.post(`${API_URL}movements/spending`, {
         spending: {
           date: this.state.date.format("YYYY-MM-DD"),
           code: this.state.code,

@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
-import EmployeeItem from './employee'
+import EmployeeItem from './employee';
+import { API_URL } from './../utilities';
 import { Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ export default class EmployeesList extends React.Component {
 
   getEmployees(number = this.state.page) {
     this.setState({ isLoading: true, page: number });
-    axios.get(`http://localhost:3001/employees`, {params: {page: number}})
+    axios.get(`${API_URL}employees`, {params: {page: number}})
     .then(res => {
       const employees = res.data.employees;
       const count = res.data.count
