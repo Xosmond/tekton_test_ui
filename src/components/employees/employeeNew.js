@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import displayError from './../utilities';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -39,8 +40,12 @@ export default class EmployeeNew extends React.Component {
       }).then(()=>{
         this.props.success('I am a strong title', 'I am an emphasized message');
         this.props.history.push('/employees')
-      }).catch(()=>{
-        this.props.error('Error', 'An error ocurred when creating.');
+      }).catch((error)=>{
+        if (error.response.status === 400) {
+          this.props.warning('Some errors ocurring when saving', displayError(error.response.data.errors));
+        } else {
+          this.props.error('Error', 'An error ocurred when creating.');
+        }
       })
     } else {
       this.props.warning('Warning', 'Solve the validation problems first');

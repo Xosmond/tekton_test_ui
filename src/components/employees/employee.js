@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import displayError from './../utilities';
 
 export default class EmployeeItem extends React.Component {
   constructor(props) {
@@ -12,8 +13,12 @@ export default class EmployeeItem extends React.Component {
     .then(() => {
       this.props.success('Success', 'Employee deleted sucessfully.');
       this.props.getEmployees(1)
-    }).catch(()=>{
-      this.props.error('Error', 'An error ocurred when deleting.');
+    }).catch((error)=>{
+      if (error.response.status === 400) {
+        this.props.warning('You can not delete this employee', displayError(error.response.data.errors));
+      } else {
+        this.props.error('Error', 'An error ocurred when deleting.');
+      }
     })
   }
 

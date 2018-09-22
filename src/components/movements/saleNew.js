@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
+import displayError from './../utilities';
 
 export default class SaleNew extends React.Component {
   state = {date: moment(), code: '', description: '', amount: '', currencyId: '', currencies: [],
@@ -44,8 +45,12 @@ export default class SaleNew extends React.Component {
       }).then(()=>{
         this.props.success('Success', 'Sale saved sucessfully.');
         this.props.history.push('/movements')
-      }).catch(()=>{
-        this.props.error('Error', 'An error ocurred when creating.');
+      }).catch((error)=>{
+        if (error.response.status === 400) {
+          this.props.warning('Some errors ocurring when saving', displayError(error.response.data.errors));
+        } else {
+          this.props.error('Error', 'An error ocurred when creating.');
+        }
       })
     } else {
       this.props.warning('Warning', 'Solve the validation problems first');

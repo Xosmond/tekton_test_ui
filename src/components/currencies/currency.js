@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import displayError from './../utilities'
 
 export default class CurrencyItem extends React.Component {
   constructor(props) {
@@ -12,8 +13,12 @@ export default class CurrencyItem extends React.Component {
     .then(() => {
       this.props.success('Success', 'Currency deleted sucessfully.');
       this.props.getCurrencies(1)
-    }).catch(()=>{
-      this.props.error('Error', 'An error ocurred when deleting.');
+    }).catch((error)=>{
+      if (error.response.status === 400) {
+        this.props.warning('You can not delete this currency', displayError(error.response.data.errors));
+      } else {
+        this.props.error('Error', 'An error ocurred when deleting.');
+      }
     })
   }
 

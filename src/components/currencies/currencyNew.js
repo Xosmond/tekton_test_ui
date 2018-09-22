@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import displayError from './../utilities'
 
 export default class EmployeeNew extends React.Component {
   constructor(props) {
@@ -31,8 +32,12 @@ export default class EmployeeNew extends React.Component {
       }).then(()=>{
         this.props.success('Success', 'Currency created sucessfully.');
         this.props.history.push('/currencies')
-      }).catch(()=>{
-        this.props.error('Error', 'An error ocurred when creating.');
+      }).catch((error)=>{
+        if (error.response.status === 400) {
+          this.props.warning('Some errors ocurring when saving', displayError(error.response.data.errors));
+        } else {
+          this.props.error('Error', 'An error ocurred when creating.');
+        }
       })
     } else {
       this.props.warning('Warning', 'Solve the validation problems first');

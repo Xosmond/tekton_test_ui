@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import displayError from './../utilities';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -46,11 +47,14 @@ export default class EmployeeNew extends React.Component {
         birth_date: this.state.birthDate.format("YYYY-MM-DD"),
         admission_date: this.state.admissionDate.format("YYYY-MM-DD")
       }).then(()=>{
-        console.log(this.props.route)
         this.props.success('Success', 'Updated employee sucessfully.');
         this.props.history.push('/employees')
-      }).catch(()=>{
-        this.props.error('Error', 'An error ocurred when updating.');
+      }).catch((error)=>{
+        if (error.response.status === 400) {
+          this.props.warning('Some errors ocurring when saving', displayError(error.response.data.errors));
+        } else {
+          this.props.error('Error', 'An error ocurred when updating.');
+        }
       })
     } else {
       this.props.warning('Warning', 'Solve the validation problems first');
