@@ -16,6 +16,7 @@ import CurrencyNew from './components/currencies/currencyNew'
 import CurrencyEdit from './components/currencies/currencyEdit'
 
 import Movements from './components/movements/movements'
+import MovementsToday from './components/movements/movementsToday'
 
 import SaleNew from './components/movements/saleNew'
 
@@ -85,6 +86,11 @@ export default class App extends React.Component {
             </div>
             <div className="row">
               <div className="col-xs-12">
+                <Link to="/movements">Today</Link>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12">
                 <Link to="/movements/sale">Register Sale</Link>
               </div>
             </div>
@@ -113,6 +119,7 @@ export default class App extends React.Component {
             <Route exact path="/currencies/new" render={(props)=><CurrencyNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/currencies/:id/edit" render={(props)=><CurrencyEdit success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/movements" render={(props)=><Movements success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/movements/today" render={(props)=><MovementsToday success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/movements/sale" render={(props)=><SaleNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
           </div>
         </div>
