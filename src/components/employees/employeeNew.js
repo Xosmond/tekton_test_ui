@@ -7,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 export default class EmployeeNew extends React.Component {
   constructor(props) {
     super(props);
+    this.props.setTitle("New employee")
     this.state = {doc: '', names: '', lastNames: '', birthDate: moment().subtract(20,'year'), admissionDate: moment(),
       docValid: false, namesValid: true, lastNamesValid: true
     };

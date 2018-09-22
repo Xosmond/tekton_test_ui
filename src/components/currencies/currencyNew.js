@@ -4,6 +4,7 @@ import axios from 'axios';
 export default class EmployeeNew extends React.Component {
   constructor(props) {
     super(props);
+    this.props.setTitle("New Currency")
     this.state = {code: '', name: '', sign: '', rate: '', codeValid: false, nameValid: false, signValid: false, rateValid: false};
 
     this.handleChangeCode = this.handleChangeCode.bind(this);

@@ -12,6 +12,7 @@ export default class MovementsList extends React.Component {
   }
   constructor(props) {
     super(props)
+    this.props.setTitle("Movements")
     this.getMovements = this.getMovements.bind(this)
   }
 

@@ -16,14 +16,19 @@ import CurrencyNew from './components/currencies/currencyNew'
 import CurrencyEdit from './components/currencies/currencyEdit'
 
 import Movements from './components/movements/movements'
+
 import SaleNew from './components/movements/saleNew'
 
 export default class App extends React.Component {
+  state = {
+    title: ''
+  }
   constructor(props) {
     super(props)
     this.success = this.success.bind(this)
     this.warning = this.warning.bind(this)
     this.error = this.error.bind(this)
+    this.setTitle = this.setTitle.bind(this)
   }
   success(title, message) {
     this.container.success(
@@ -52,6 +57,10 @@ export default class App extends React.Component {
     );
   }
 
+  setTitle(title) {
+    this.setState({title: title})
+  }
+
   render() {
     return (
       <Router>
@@ -62,6 +71,13 @@ export default class App extends React.Component {
         />
         <div className="row">
           <div className="col-xs-12 col-md-2">
+          </div>
+          <div className="col-xs-12 col-md-10">
+            <h3>{this.state.title}</h3>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-md-2">
             <div className="row">
               <div className="col-xs-12">
                 <Link to="/">Home</Link>
@@ -69,12 +85,12 @@ export default class App extends React.Component {
             </div>
             <div className="row">
               <div className="col-xs-12">
-                <Link to="/movements">Movements</Link>
+                <Link to="/movements/sale">Register Sale</Link>
               </div>
             </div>
             <div className="row">
               <div className="col-xs-12">
-                <Link to="/movements/sale">Register Sale</Link>
+                <Link to="/movements">All Movements</Link>
               </div>
             </div>
             <div className="row">
@@ -89,15 +105,15 @@ export default class App extends React.Component {
             </div>
           </div>
           <div className="col-xs-12 col-md-10">
-            <Route exact path="/" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/employees" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/employees/new" render={(props)=><EmployeeNew success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/employees/:id/edit" render={(props)=><EmployeeEdit success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/currencies" render={(props)=><CurrenciesList success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/currencies/new" render={(props)=><CurrencyNew success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/currencies/:id/edit" render={(props)=><CurrencyEdit success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/movements" render={(props)=><Movements success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
-            <Route exact path="/movements/sale" render={(props)=><SaleNew success={this.success} error={this.error} warning={this.warning} {...props}/>}/>
+            <Route exact path="/" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/employees" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/employees/new" render={(props)=><EmployeeNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/employees/:id/edit" render={(props)=><EmployeeEdit success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/currencies" render={(props)=><CurrenciesList success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/currencies/new" render={(props)=><CurrencyNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/currencies/:id/edit" render={(props)=><CurrencyEdit success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/movements" render={(props)=><Movements success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/movements/sale" render={(props)=><SaleNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
           </div>
         </div>
       </div>

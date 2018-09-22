@@ -13,6 +13,7 @@ export default class EmployeesList extends React.Component {
   }
   constructor(props) {
     super(props)
+    this.props.setTitle("Employees")
     this.getEmployees = this.getEmployees.bind(this)
   }
 

@@ -9,7 +9,8 @@ export default class SaleNew extends React.Component {
   };
   constructor(props) {
     super(props);
-    axios.get(`http://localhost:3001/currencies`)
+    this.props.setTitle("New Sale")
+    axios.get(`http://localhost:3001/currencies/all`)
     .then(res => {
       const currencies = res.data.currencies;
       this.setState({currencies: currencies });

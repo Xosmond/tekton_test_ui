@@ -10,6 +10,7 @@ export default class EmployeeNew extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.props.setTitle("Edit employee")
     var id = this.props.match.params.id
     axios.get(`http://localhost:3001/employees/${id}`)
     .then(res => {

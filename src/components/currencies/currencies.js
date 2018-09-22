@@ -13,6 +13,7 @@ export default class CurrenciesList extends React.Component {
   }
   constructor(props) {
     super(props)
+    this.props.setTitle("Currencies")
     this.getCurrencies = this.getCurrencies.bind(this)
   }
 

@@ -5,6 +5,7 @@ export default class EmployeeNew extends React.Component {
   state = {code: '', name: '', sign: '', rate: '', codeValid: false, nameValid: false, signValid: false, rateValid: false};
   constructor(props) {
     super(props);
+    this.props.setTitle("Edit Currency")
     var id = this.props.match.params.id
     axios.get(`http://localhost:3001/currencies/${id}`)
     .then(res => {
