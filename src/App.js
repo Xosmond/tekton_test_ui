@@ -19,6 +19,7 @@ import Movements from './components/movements/movements'
 import MovementsToday from './components/movements/movementsToday'
 
 import SaleNew from './components/movements/saleNew'
+import SpendingNew from './components/movements/spendingNew'
 
 export default class App extends React.Component {
   state = {
@@ -96,6 +97,11 @@ export default class App extends React.Component {
             </div>
             <div className="row">
               <div className="col-xs-12">
+                <Link to="/movements/spending">Register Spending</Link>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12">
                 <Link to="/movements">All Movements</Link>
               </div>
             </div>
@@ -121,6 +127,7 @@ export default class App extends React.Component {
             <Route exact path="/movements" render={(props)=><Movements success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/movements/today" render={(props)=><MovementsToday success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/movements/sale" render={(props)=><SaleNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/movements/spending" render={(props)=><SpendingNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
           </div>
         </div>
       </div>
