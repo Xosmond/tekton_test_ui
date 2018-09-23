@@ -117,7 +117,7 @@ export default class App extends React.Component {
             </div>
           </div>
           <div className="col-xs-12 col-md-10">
-            <Route exact path="/" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
+            <Route exact path="/" render={(props)=><Movements success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/employees" render={(props)=><EmployeesList success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/employees/new" render={(props)=><EmployeeNew success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
             <Route exact path="/employees/:id/edit" render={(props)=><EmployeeEdit success={this.success} error={this.error} warning={this.warning} setTitle={this.setTitle} {...props}/>}/>
