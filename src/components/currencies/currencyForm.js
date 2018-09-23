@@ -1,6 +1,4 @@
-import React from 'react'
-import axios from 'axios';
-import { displayError, API_URL } from './../utilities';
+import React from 'react';
 
 export default class CurrencyEdit extends React.Component {
   constructor(props) {

@@ -87,7 +87,7 @@ export default class App extends React.Component {
             </div>
             <div className="row">
               <div className="col-xs-12">
-                <Link to="/movements">Today</Link>
+                <Link to="/movements/today">Today</Link>
               </div>
             </div>
             <div className="row">
