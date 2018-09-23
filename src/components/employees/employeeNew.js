@@ -35,7 +35,7 @@ export default class EmployeeNew extends React.Component {
 
   render() {
     return (
-      <EmployeeForm handleSubmit={this.handleSubmit} {...this.props}/>
+      <EmployeeForm onRef={ref => (this.form = ref)} handleSubmit={this.handleSubmit} {...this.props}/>
     );
   }
 }

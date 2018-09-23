@@ -30,7 +30,7 @@ export default class CurrencyNew extends React.Component {
 
   render() {
     return (
-      <CurrencyForm handleSubmit={this.handleSubmit} {...this.props}/>
+      <CurrencyForm onRef={ref => (this.form = ref)} handleSubmit={this.handleSubmit} {...this.props}/>
     );
   }
 }
